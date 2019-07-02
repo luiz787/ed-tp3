@@ -8,10 +8,14 @@ class BinaryTrie {
 public:
 	BinaryTrie();
 	~BinaryTrie();
-	char search(MorseCodeChar key);
+	void preOrder();
+	void insert(const MorseCodeChar &key, char value);
+	char search(const MorseCodeChar &key);
 private:
 	Node* root;
-	char recursiveSearch(Node* node, MorseCodeChar key, int pos);
+	void preOrder(Node *node);
+	Node* insert(Node* n, const MorseCodeChar &key, char value);
+	Node* search(Node* node, const MorseCodeChar &key);
 };
 
 #endif // ED_TP3_BINARY_TRIE

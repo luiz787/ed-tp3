@@ -4,16 +4,16 @@
 class Node {
 public:
 	explicit Node(char data);
+	Node();
 	~Node();
 
 	char getData() const;
 	Node* getLeft() const;
 	Node* getRight() const;
-	
+
+	void setData(char data);
 	void setLeft(Node* left);
 	void setRight(Node* right);
-
-	bool isLeaf();
 
 private:
 	char data;

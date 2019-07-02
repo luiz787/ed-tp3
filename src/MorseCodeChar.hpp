@@ -5,9 +5,10 @@
 
 class MorseCodeChar {
 public:
-	MorseCodeChar(std::string repr);
+	explicit MorseCodeChar(std::string repr);
 	~MorseCodeChar();
 	char charAt(int pos) const;
+	uint8_t size() const;
 private:
 	std::string repr;
 };

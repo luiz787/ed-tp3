@@ -2,6 +2,14 @@
 
 Node::Node(char data) {
 	this->data = data;
+	this->left = nullptr;
+	this->right = nullptr;
+}
+
+Node::Node() {
+    this->data = '#'; // Placeholder value.
+    this->left = nullptr;
+    this->right = nullptr;
 }
 
 Node::~Node() = default;
@@ -18,14 +26,14 @@ Node* Node::getRight() const {
 	return this->right;
 }
 
+void Node::setData(char data) {
+    this->data = data;
+}
+
 void Node::setLeft(Node* left) {
 	this->left = left;
 }
 
 void Node::setRight(Node* right) {
 	this->right = right;
-}
-
-bool Node::isLeaf() {
-	return this->left == nullptr && this->right == nullptr;
 }

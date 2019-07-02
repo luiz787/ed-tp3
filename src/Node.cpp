@@ -12,7 +12,10 @@ Node::Node() {
     this->right = nullptr;
 }
 
-Node::~Node() = default;
+Node::~Node() {
+    delete this->left;
+    delete this->right;
+}
 
 char Node::getData() const {
 	return this->data;

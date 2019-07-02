@@ -13,9 +13,7 @@ public:
 	char search(const MorseCodeChar &key);
 private:
 	Node* root;
-	void preOrder(Node *node);
-	Node* insert(Node* n, const MorseCodeChar &key, char value);
-	Node* search(Node* node, const MorseCodeChar &key);
+    static void preOrder(Node *node, std::string path);
 };
 
 #endif // ED_TP3_BINARY_TRIE

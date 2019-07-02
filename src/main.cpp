@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
 BinaryTrie* buildTrieFromMorseDefinitionFile() {
     auto trie = new BinaryTrie();
 	std::string line;
-	std::ifstream morseDefinitionFile("../morse.txt");
+	std::ifstream morseDefinitionFile("morse.txt");
  	if (morseDefinitionFile.is_open()) {
     	while(getline(morseDefinitionFile,line)) {
       		auto spacePosition = line.find(' ');
@@ -33,7 +33,8 @@ BinaryTrie* buildTrieFromMorseDefinitionFile() {
     	}
     	morseDefinitionFile.close();
   	} else {
-  		std::cout << "Unable to open file" << std::endl;
+  		std::cout << "Unable to open morse.txt file" << std::endl;
+  		throw std::runtime_error("Unable to open morse.txt file");
   	}
  	return trie;
 }

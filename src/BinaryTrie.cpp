@@ -75,6 +75,7 @@ void BinaryTrie::insert(const MorseCodeChar &key, char value) {
         auto currentSymbol = key.charAt(i);
         if (currentSymbol == '.') {
             if (currentNode->getLeft() == nullptr) {
+                // If the left node is null, it creates a new node and continues.
                 auto newNode = new Node();
                 currentNode->setLeft(newNode);
                 currentNode = newNode;
@@ -83,6 +84,7 @@ void BinaryTrie::insert(const MorseCodeChar &key, char value) {
             }
         } else if (currentSymbol == '-') {
             if (currentNode->getRight() == nullptr) {
+                // If the right node is null, it creates a new node and continues.
                 auto newNode = new Node();
                 currentNode->setRight(newNode);
                 currentNode = newNode;
@@ -94,6 +96,12 @@ void BinaryTrie::insert(const MorseCodeChar &key, char value) {
     currentNode->setData(value);
 }
 
+/*
+ * Helper method used to store the path of dots and dashes.
+ *
+ * @param node - the current node.
+ * @param path - the path taken so far.
+ */
 void BinaryTrie::preOrder(Node *node, std::string path) {
     if (node != nullptr) {
         auto data = node->getData();
@@ -104,7 +112,9 @@ void BinaryTrie::preOrder(Node *node, std::string path) {
         preOrder(node->getRight(), path + "-");
     }
 }
-
+/*
+ * Pre order traversal in the tree. Prints only non empty (value different than "#") nodes.
+ */
 void BinaryTrie::preOrder() {
     this->preOrder(this->root, "");
 }

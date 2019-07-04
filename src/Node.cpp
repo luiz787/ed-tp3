@@ -13,6 +13,7 @@ Node::Node() {
 }
 
 Node::~Node() {
+    // Recursive delete all children.
     delete this->left;
     delete this->right;
 }

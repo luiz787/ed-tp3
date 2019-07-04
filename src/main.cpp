@@ -10,13 +10,18 @@ BinaryTrie* buildTrieFromMorseDefinitionFile();
 void translate(BinaryTrie* trie);
 
 int main(int argc, char** argv) {
-    BinaryTrie* trie = buildTrieFromMorseDefinitionFile();
-
-    translate(trie);
-
-    if (argc > 1 && strncmp(argv[1], "-a", 2) == 0) {
-        trie->preOrder();
+    BinaryTrie* trie = nullptr;
+    try {
+        trie = buildTrieFromMorseDefinitionFile();
+        translate(trie);
+        if (argc > 1 && strncmp(argv[1], "-a", 2) == 0) {
+            trie->preOrder();
+        }
+    } catch (const std::exception& e) {
+        std::cout << e.what() << std::endl;
     }
+
+    delete trie;
     return 0;
 }
 
@@ -43,7 +48,6 @@ BinaryTrie* buildTrieFromMorseDefinitionFile() {
     	}
     	morseDefinitionFile.close();
   	} else {
-  		std::cout << "Unable to open morse.txt file" << std::endl;
   		throw std::runtime_error("Unable to open morse.txt file");
   	}
  	return trie;
@@ -61,7 +65,7 @@ void translate(BinaryTrie* trie) {
             break;
         }
         std::string charCode;
-        for (auto i = 0; i < line.size(); i++) {
+        for (uint8_t i = 0; i < line.size(); i++) {
             if (line[i] == ' ') {
                 /*
                  * When a space is seen, it means that the morse code for a letter just ended, and the search for that

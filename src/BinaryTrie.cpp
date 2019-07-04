@@ -37,6 +37,9 @@ char BinaryTrie::search(const MorseCodeChar &key) {
     auto keySize = key.size();
     auto currentNode = this->root;
     for (auto i = 0; i < keySize; i++) {
+        if (currentNode == nullptr) {
+            throw std::runtime_error("Key not present in TRIE");
+        }
         auto currentSymbol = key.charAt(i);
         if (currentSymbol == '.') {
             currentNode = currentNode->getLeft();
